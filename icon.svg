@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="这一口">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4a38e"/>
+      <stop offset="1" stop-color="#d85d45"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#background)"/>
+  <path d="M142 216c0 92 49 157 114 157s114-65 114-157H142Z" fill="#fff8ef"/>
+  <path d="M157 216h198" fill="none" stroke="#49271f" stroke-width="18" stroke-linecap="round"/>
+  <path d="M205 128c-17 26 18 39 0 67M258 118c-18 30 19 44 0 77M311 128c-17 26 18 39 0 67" fill="none" stroke="#fff8ef" stroke-width="16" stroke-linecap="round"/>
+  <path d="M199 259c18 18 38 27 57 27s39-9 57-27" fill="none" stroke="#d85d45" stroke-width="15" stroke-linecap="round"/>
+</svg>

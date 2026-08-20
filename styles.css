@@ -1,0 +1,680 @@
+:root {
+  color-scheme: light dark;
+  --page: #f8f4ed;
+  --surface: #fffdf9;
+  --surface-soft: #efe9df;
+  --surface-accent: #f7e0d8;
+  --text: #251f1b;
+  --muted: #786d63;
+  --border: #dfd7cd;
+  --accent: #df684e;
+  --accent-pressed: #c9563f;
+  --accent-text: #ffffff;
+  --shadow: 0 14px 38px rgba(73, 55, 42, 0.10);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #171411;
+    --surface: #24201c;
+    --surface-soft: #312b26;
+    --surface-accent: #523028;
+    --text: #f8f3ed;
+    --muted: #bdb2a8;
+    --border: #443d36;
+    --accent: #ef836b;
+    --accent-pressed: #f49a85;
+    --accent-text: #21100c;
+    --shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 82% 0%, color-mix(in srgb, var(--surface-accent) 72%, transparent), transparent 32rem),
+    var(--page);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
+  font-size: 17px;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.app-shell {
+  width: min(100%, 680px);
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top, 0px) + 18px) 18px calc(var(--safe-bottom) + 30px);
+}
+
+.app-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.brand-kicker,
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.app-header h1,
+.intro-block h2,
+.section-heading h3,
+.decision-panel h3 {
+  margin: 0;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+.app-header h1 {
+  font-size: clamp(28px, 8vw, 38px);
+}
+
+.local-badge {
+  flex: 0 0 auto;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.install-tip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 14px 15px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.install-tip strong,
+.install-tip p {
+  margin: 0;
+}
+
+.install-tip p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.install-tip button {
+  min-width: 50px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.layer-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin-bottom: 28px;
+  padding: 6px;
+  border-radius: 20px;
+  background: var(--surface-soft);
+}
+
+.layer-switch button {
+  min-height: 60px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 15px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.layer-switch button.is-active {
+  background: var(--surface);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.layer-switch span,
+.layer-switch small {
+  display: block;
+}
+
+.layer-switch span {
+  font-weight: 650;
+}
+
+.layer-switch small {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.intro-block {
+  margin: 0 2px 26px;
+}
+
+.intro-block h2 {
+  max-width: 540px;
+  font-size: clamp(30px, 9vw, 44px);
+  line-height: 1.12;
+}
+
+.intro-block > p:not(.eyebrow) {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.intro-block .library-count {
+  display: inline-flex;
+  margin-top: 10px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  font-size: 13px;
+}
+
+.library-count strong {
+  margin: 0 3px;
+  color: var(--accent);
+}
+
+.choice-fieldset {
+  margin: 0 0 22px;
+  padding: 0;
+  border: 0;
+}
+
+.choice-fieldset legend {
+  margin-bottom: 11px;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.meal-switch {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.meal-switch button,
+.taste-chips button {
+  min-height: 46px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.meal-switch button {
+  border-radius: 15px;
+  font-size: 15px;
+}
+
+.meal-switch button.is-selected,
+.taste-chips button.is-selected {
+  border-color: var(--accent);
+  background: var(--surface-accent);
+  color: color-mix(in srgb, var(--accent) 70%, var(--text));
+}
+
+.taste-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.taste-chips button {
+  padding: 0 15px;
+  border-radius: 999px;
+  font-size: 15px;
+}
+
+.field-hint {
+  margin: 8px 2px 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.primary-button,
+.secondary-button {
+  width: 100%;
+  min-height: 54px;
+  border-radius: 17px;
+  cursor: pointer;
+}
+
+.primary-button {
+  border: 0;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 650;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 26%, transparent);
+}
+
+.primary-button:active {
+  background: var(--accent-pressed);
+  transform: scale(0.988);
+}
+
+.secondary-button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.text-button {
+  min-height: 44px;
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.result-panel,
+.decision-panel {
+  margin-top: 30px;
+  scroll-margin-top: 18px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.section-heading h3 {
+  font-size: 23px;
+}
+
+.recommendation-list {
+  display: grid;
+  gap: 12px;
+}
+
+.recommendation-card {
+  overflow: hidden;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: 0 7px 22px color-mix(in srgb, var(--text) 6%, transparent);
+}
+
+.dish-photo {
+  position: relative;
+  min-height: 148px;
+  margin: -17px -17px 16px;
+  background-image: url("cuisine-atlas.png");
+  background-repeat: no-repeat;
+  background-size: 300% auto;
+  background-color: var(--surface-soft);
+}
+
+.dish-photo::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(25, 17, 12, 0.42), transparent 58%);
+  content: "";
+}
+
+.dish-photo span {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  left: 11px;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  background: rgba(20, 14, 10, 0.42);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 650;
+  backdrop-filter: blur(5px);
+}
+
+.dish-photo--xinjiang { background-position: 0% 0%; }
+.dish-photo--northwest { background-position: 50% 0%; }
+.dish-photo--northeast { background-position: 100% 0%; }
+.dish-photo--shandong { background-position: 0% 100%; }
+.dish-photo--hotpot { background-position: 50% 100%; }
+.dish-photo--home { background-position: 100% 100%; }
+.dish-photo--food {
+  background-position: center;
+  background-size: cover;
+}
+
+.recommendation-card.is-leaving {
+  opacity: 0.35;
+  transform: scale(0.985);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-top h4 {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.food-icon {
+  display: grid;
+  width: 45px;
+  height: 45px;
+  flex: 0 0 45px;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--surface-accent);
+  font-size: 24px;
+}
+
+.card-reason,
+.card-tags,
+.safety-note,
+.restaurant-address {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.card-reason {
+  margin: 6px 0 0;
+}
+
+.card-tags {
+  margin: 12px 0 0;
+}
+
+.staple-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 11px 0 0;
+  padding: 10px 11px;
+  border-radius: 12px;
+  background: var(--surface-accent);
+  font-size: 14px;
+}
+
+.staple-note span {
+  color: var(--muted);
+}
+
+.staple-note strong {
+  color: var(--accent);
+  font-size: 15px;
+}
+
+.safety-note {
+  margin: 10px 0 0;
+  padding: 9px 11px;
+  border-radius: 12px;
+  background: var(--surface-soft);
+}
+
+.card-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 7px;
+  margin-top: 15px;
+}
+
+.card-actions button {
+  min-height: 46px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.card-actions .pick-button {
+  background: var(--surface-soft);
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.card-actions .tired-button {
+  color: var(--accent);
+}
+
+.card-actions .skip-button {
+  color: var(--muted);
+}
+
+.decision-panel {
+  padding: 28px 20px;
+  border-radius: 26px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.decision-photo {
+  min-height: 170px;
+  margin: 0 0 20px;
+  border-radius: 20px;
+}
+
+.decision-panel > p:first-of-type,
+.decision-panel > span {
+  color: var(--muted);
+}
+
+.decision-panel > p:first-of-type {
+  margin: 0 0 5px;
+}
+
+.decision-panel h3 {
+  font-size: 31px;
+}
+
+.decision-panel > span {
+  display: block;
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+.gentle-note {
+  margin: 24px 0;
+  padding: 13px;
+  border-radius: 15px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.restaurant-address {
+  margin: 5px 0 0;
+}
+
+.integration-note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px dashed color-mix(in srgb, var(--accent) 48%, var(--border));
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--surface-accent) 55%, transparent);
+}
+
+.integration-note > span {
+  align-self: start;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.integration-note strong,
+.integration-note p {
+  margin: 0;
+}
+
+.integration-note p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.history-section {
+  margin-top: 30px;
+  border-top: 1px solid var(--border);
+}
+
+.history-section summary {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 650;
+}
+
+.history-section summary::-webkit-details-marker {
+  display: none;
+}
+
+.history-section summary small {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.history-list {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.history-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 11px 13px;
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+
+.history-row span:last-child {
+  color: var(--muted);
+  font-size: 13px;
+  text-align: right;
+}
+
+.restore-button {
+  margin-top: 5px;
+}
+
+footer {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.toast {
+  position: fixed;
+  z-index: 10;
+  right: 18px;
+  bottom: calc(var(--safe-bottom) + 18px);
+  left: 18px;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--text) 94%, transparent);
+  color: var(--page);
+  box-shadow: var(--shadow);
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (max-width: 390px) {
+  .app-shell {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .card-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card-actions .pick-button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 340px) {
+  .app-header {
+    gap: 8px;
+  }
+
+  .local-badge {
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

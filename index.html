@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f4ed" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171411" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="这一口">
+  <meta name="description" content="根据当下胃口、吃腻冷却和家庭偏好，快速选出这一口。">
+  <title>这一口</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20260820.3">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="brand-kicker">这一口</p>
+        <h1>今天吃点什么？</h1>
+      </div>
+      <span class="local-badge">仅存本机</span>
+    </header>
+
+    <aside class="install-tip" data-install-tip hidden>
+      <div>
+        <strong>放到 iPhone 主屏幕</strong>
+        <p>Safari 点“分享”，再选“添加到主屏幕”。</p>
+      </div>
+      <button type="button" data-dismiss-install aria-label="关闭添加提示">关闭</button>
+    </aside>
+
+    <nav class="layer-switch" aria-label="推荐类型">
+      <button type="button" class="is-active" data-layer-button="food" aria-pressed="true">
+        <span>在家吃</span>
+        <small>纯食物推荐</small>
+      </button>
+      <button type="button" data-layer-button="restaurant" aria-pressed="false">
+        <span>外卖 / 出去吃</span>
+        <small>菜系与招牌菜</small>
+      </button>
+    </nav>
+
+    <main>
+      <section class="layer is-active" data-layer="food">
+        <div class="intro-block">
+          <p class="eyebrow" data-greeting>今晚</p>
+          <h2>哪一口，现在比较容易？</h2>
+          <p>不用想菜名，选一两个感觉就好。</p>
+          <p class="library-count">离线菜库里有 <strong data-food-count></strong> 道选择</p>
+        </div>
+
+        <fieldset class="choice-fieldset">
+          <legend>这是哪一顿</legend>
+          <div class="meal-switch" data-meal-switch>
+            <button type="button" data-meal="breakfast" aria-pressed="false">早餐</button>
+            <button type="button" data-meal="main" aria-pressed="false">正餐</button>
+            <button type="button" data-meal="snack" aria-pressed="false">垫一口</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="choice-fieldset" data-staple-field>
+          <legend>家常菜配什么主食</legend>
+          <div class="taste-chips staple-chips" data-staple-switch>
+            <button type="button" data-staple="random" aria-pressed="true" class="is-selected">随机搭配</button>
+            <button type="button" data-staple="米饭" aria-pressed="false">米饭</button>
+            <button type="button" data-staple="面条" aria-pressed="false">面条</button>
+            <button type="button" data-staple="拉条子" aria-pressed="false">拉条子</button>
+            <button type="button" data-staple="泡面" aria-pressed="false">泡面</button>
+            <button type="button" data-staple="大馒头" aria-pressed="false">大馒头</button>
+          </div>
+          <p class="field-hint">早餐不搭配；推荐家常菜时会一起给出主食。</p>
+        </fieldset>
+
+        <fieldset class="choice-fieldset">
+          <legend>偏爱菜系（可多选）</legend>
+          <div class="taste-chips cuisine-filter" data-food-categories>
+            <button type="button" data-food-category="xinjiang" aria-pressed="false">新疆菜</button>
+            <button type="button" data-food-category="northwest" aria-pressed="false">西北菜</button>
+            <button type="button" data-food-category="northeast" aria-pressed="false">东北菜</button>
+            <button type="button" data-food-category="shandong" aria-pressed="false">鲁菜</button>
+            <button type="button" data-food-category="hotpot" aria-pressed="false">火锅</button>
+            <button type="button" data-food-category="home" aria-pressed="false">家常菜</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="choice-fieldset">
+          <legend>现在能接受</legend>
+          <div class="taste-chips" data-food-tags>
+            <button type="button" data-tag="热乎的" aria-pressed="false">热乎的</button>
+            <button type="button" data-tag="带汤的" aria-pressed="false">带汤的</button>
+            <button type="button" data-tag="清爽的" aria-pressed="false">清爽的</button>
+            <button type="button" data-tag="酸一点" aria-pressed="false">酸一点</button>
+            <button type="button" data-tag="干香" aria-pressed="false">干香</button>
+            <button type="button" data-tag="软糯" aria-pressed="false">软糯</button>
+            <button type="button" data-tag="小份" aria-pressed="false">小份</button>
+            <button type="button" data-tag="不闻油烟" aria-pressed="false">不闻油烟</button>
+            <button type="button" data-tag="香辣" aria-pressed="false">香辣</button>
+            <button type="button" data-tag="炖菜" aria-pressed="false">炖菜</button>
+            <button type="button" data-tag="面食" aria-pressed="false">面食</button>
+          </div>
+        </fieldset>
+
+        <button type="button" class="primary-button" data-recommend-food>给我三个</button>
+
+        <section class="result-panel" data-food-results hidden aria-live="polite">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">这一轮</p>
+              <h3>这三个，哪一个还行？</h3>
+            </div>
+            <button type="button" class="text-button" data-swap-food>换一批</button>
+          </div>
+          <div class="recommendation-list" data-food-list></div>
+        </section>
+
+        <section class="decision-panel" data-food-decision hidden aria-live="polite">
+          <div class="dish-photo decision-photo dish-photo--home" data-decision-photo role="img" aria-label="菜系代表菜图片"></div>
+          <p>这顿先定它</p>
+          <h3 data-decision-name></h3>
+          <span data-decision-meta></span>
+          <p class="gentle-note">先准备小份，不够再添。少一点压力，更容易开始。</p>
+          <button type="button" class="secondary-button" data-pick-again>我再想想</button>
+        </section>
+      </section>
+
+      <section class="layer" data-layer="restaurant" hidden>
+        <div class="intro-block">
+          <p class="eyebrow">完全离线 · 不查平台</p>
+          <h2>外卖，还是出去吃？</h2>
+          <p>先定菜系和招牌菜，再自行打开常用 App 找店。</p>
+        </div>
+
+        <fieldset class="choice-fieldset">
+          <legend>用餐方式</legend>
+          <div class="meal-switch" data-restaurant-mode>
+            <button type="button" data-mode="delivery" aria-pressed="true" class="is-selected">叫外卖</button>
+            <button type="button" data-mode="dineout" aria-pressed="false">出去吃</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="choice-fieldset">
+          <legend>今天偏向</legend>
+          <div class="taste-chips" data-cuisine-tags>
+            <button type="button" data-cuisine="新疆菜" aria-pressed="false">新疆菜</button>
+            <button type="button" data-cuisine="西北菜" aria-pressed="false">西北菜</button>
+            <button type="button" data-cuisine="东北菜" aria-pressed="false">东北菜</button>
+            <button type="button" data-cuisine="鲁菜" aria-pressed="false">鲁菜</button>
+            <button type="button" data-cuisine="火锅" aria-pressed="false">火锅</button>
+            <button type="button" data-cuisine="家常菜" aria-pressed="false">家常菜</button>
+          </div>
+        </fieldset>
+
+        <button type="button" class="primary-button" data-recommend-restaurant>推荐附近选择</button>
+
+        <section class="result-panel restaurant-results" data-restaurant-results hidden aria-live="polite">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">个性化候选</p>
+              <h3 data-restaurant-title>先看这三个</h3>
+            </div>
+            <button type="button" class="text-button" data-swap-restaurant>换一批</button>
+          </div>
+          <div class="recommendation-list" data-restaurant-list></div>
+        </section>
+
+        <section class="integration-note">
+          <span>全部离线</span>
+          <div>
+            <strong>不再依赖 MuMu 或平台登录</strong>
+            <p>图片、菜库、最近选择和“吃腻”冷却都保存在手机本地，断网也能继续选。</p>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <section class="history-section" data-history-section hidden>
+      <details>
+        <summary>
+          <span>最近选择</span>
+          <small data-history-count></small>
+        </summary>
+        <div class="history-list" data-history-list></div>
+        <button type="button" class="text-button restore-button" data-restore-cooldowns hidden>恢复全部“吃腻”</button>
+      </details>
+    </section>
+
+    <footer>
+      <p>推荐只帮忙缩小选择；孕期饮食限制与医生交代优先。</p>
+    </footer>
+  </div>
+
+  <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+  <script src="app.js?v=20260820.3" defer></script>
+</body>
+</html>
