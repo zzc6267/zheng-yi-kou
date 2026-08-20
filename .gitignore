@@ -1,0 +1,4 @@
+# Source images and local QA artifacts are intentionally not published.
+assets/dishes/*.png
+qa/
+tools/
