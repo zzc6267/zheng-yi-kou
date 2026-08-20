@@ -1,8 +1,8 @@
-const CACHE_NAME = "one-bite-v7";
+const CACHE_NAME = "one-bite-v8";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./styles.css?v=20260820.3",
+  "./styles.css?v=20260821.1",
   "./app.js?v=20260820.3",
   "./cuisine-atlas.png",
   "./manifest.webmanifest",
