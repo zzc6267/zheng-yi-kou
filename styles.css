@@ -377,6 +377,8 @@ summary:focus-visible {
 .dish-photo--hotpot { background-position: 50% 100%; }
 .dish-photo--home { background-position: 100% 100%; }
 .dish-photo--food {
+  min-height: 0;
+  aspect-ratio: 3 / 2;
   background-position: center;
   background-size: cover;
 }
